@@ -1,6 +1,15 @@
-# pruebaweb
+# BuildAI
 
-A static web page built with HTML and CSS.
+An AI-powered web creation platform built with HTML and CSS. Users can describe a website in plain English and the integrated AI builder generates a professional, ready-to-publish website instantly.
+
+## Features
+
+- **Interactive AI Builder** – Type a description, pick a quick-start template chip, and watch the AI generate a website preview in seconds.
+- **AI Features** – Highlights AI-specific capabilities: design system, copywriting, SEO optimizer, analytics insights, and continuous improvement.
+- **How it works** – Four-step AI workflow: Describe → AI Generates → Preview & Customize → Publish.
+- **Pricing** – Free, Pro, and Agency tiers tailored to AI platform usage.
+- **Fully responsive** – Mobile-first layout with hamburger navigation.
+- **Scroll animations** – Reveal-on-scroll and animated stat counters.
 
 ## How to view the page
 
