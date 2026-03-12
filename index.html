@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nexus – Professional digital solutions for modern businesses." />
-  <title>Nexus | Professional Web Solutions</title>
+  <meta name="description" content="BuildAI – Create stunning websites in seconds with the power of integrated artificial intelligence." />
+  <title>BuildAI | AI-Powered Web Creation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -13,12 +13,12 @@
        CSS Custom Properties
     ────────────────────────────────────────── */
     :root {
-      --color-bg:        #0a0a12;
-      --color-surface:   #111120;
+      --color-bg:        #060612;
+      --color-surface:   #0d0d1e;
       --color-border:    rgba(255,255,255,.08);
-      --color-primary:   #6c63ff;
-      --color-secondary: #00d4ff;
-      --color-accent:    #ff6584;
+      --color-primary:   #7c3aed;
+      --color-secondary: #06b6d4;
+      --color-accent:    #f472b6;
       --color-text:      #e8e8f0;
       --color-muted:     #8888a8;
       --radius:          1rem;
@@ -600,6 +600,248 @@
       .hero-stats { gap: 2rem; }
       .pricing-card.popular { transform: none; }
     }
+
+    /* ──────────────────────────────────────────
+       AI Builder Demo
+    ────────────────────────────────────────── */
+    #ai-builder { background: var(--color-bg); }
+
+    .ai-builder-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .ai-prompt-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .ai-prompt-panel h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .ai-prompt-panel > p {
+      color: var(--color-muted);
+      font-size: .9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .prompt-textarea {
+      width: 100%;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: .6rem;
+      padding: 1rem;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: .93rem;
+      resize: vertical;
+      min-height: 110px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      margin-bottom: 1rem;
+    }
+    .prompt-textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(124,58,237,.15);
+    }
+
+    .prompt-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .prompt-chip {
+      padding: .35rem .85rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-muted);
+      font-size: .8rem;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .prompt-chip:hover,
+    .prompt-chip.active {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: rgba(124,58,237,.08);
+    }
+
+    .ai-generate-btn {
+      width: 100%;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .ai-generate-btn .btn-label { transition: opacity .25s; }
+    .ai-generate-btn .btn-loading { position: absolute; opacity: 0; transition: opacity .25s; }
+    .ai-generate-btn.loading .btn-label { opacity: 0; }
+    .ai-generate-btn.loading .btn-loading { opacity: 1; }
+
+    .ai-preview-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .preview-topbar {
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: .6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .preview-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .preview-dot.red   { background: #ef4444; }
+    .preview-dot.yellow{ background: #f59e0b; }
+    .preview-dot.green { background: #22c55e; }
+
+    .preview-url {
+      flex: 1;
+      background: rgba(255,255,255,.05);
+      border-radius: 999px;
+      padding: .25rem .85rem;
+      font-size: .75rem;
+      color: var(--color-muted);
+      margin-left: .5rem;
+    }
+
+    .preview-body {
+      flex: 1;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .preview-placeholder {
+      text-align: center;
+      color: var(--color-muted);
+    }
+    .preview-placeholder .icon { font-size: 3rem; margin-bottom: 1rem; opacity: .4; }
+    .preview-placeholder p { font-size: .9rem; }
+
+    /* Generated site mockup */
+    .preview-site { width: 100%; display: none; flex-direction: column; gap: .75rem; animation: fadeIn .5s ease; }
+    .preview-site.visible { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    .mock-nav {
+      height: 36px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      border-radius: .5rem;
+      opacity: .9;
+    }
+    .mock-hero {
+      height: 90px;
+      background: linear-gradient(135deg, rgba(124,58,237,.25), rgba(6,182,212,.15));
+      border-radius: .5rem;
+      border: 1px solid rgba(124,58,237,.2);
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      gap: .75rem;
+    }
+    .mock-hero-text { flex: 1; display: flex; flex-direction: column; gap: .4rem; }
+    .mock-line {
+      height: 10px;
+      border-radius: 4px;
+      background: rgba(255,255,255,.15);
+    }
+    .mock-line.short { width: 60%; }
+    .mock-line.xshort { width: 40%; }
+    .mock-btn-small {
+      width: 70px; height: 28px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      flex-shrink: 0;
+    }
+    .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .5rem;
+    }
+    .mock-card {
+      height: 60px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: .5rem;
+    }
+    .mock-footer {
+      height: 28px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: .5rem;
+    }
+
+    .preview-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .35rem .8rem;
+      background: rgba(34,197,94,.1);
+      border: 1px solid rgba(34,197,94,.3);
+      border-radius: 999px;
+      color: #4ade80;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .preview-actions .btn { padding: .55rem 1.2rem; font-size: .85rem; }
+
+    @media (max-width: 900px) {
+      .ai-builder-wrapper { grid-template-columns: 1fr; }
+    }
+
+    /* ──────────────────────────────────────────
+       AI Features highlight bar
+    ────────────────────────────────────────── */
+    .ai-features-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 3.5rem;
+    }
+    .ai-feature-pill {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .6rem 1.2rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      font-size: .88rem;
+      color: var(--color-muted);
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .ai-feature-pill:hover { border-color: var(--color-primary); color: var(--color-text); }
+    .ai-feature-pill .pill-icon { font-size: 1rem; }
   </style>
 </head>
 <body>
@@ -609,10 +851,11 @@
   ────────────────────────────────────────── -->
   <nav id="navbar">
     <div class="container nav-inner">
-      <a href="#" class="nav-logo gradient-text">Nexus</a>
+      <a href="#" class="nav-logo gradient-text">BuildAI</a>
 
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
+        <li><a href="#ai-builder">AI Builder</a></li>
+        <li><a href="#features">Features</a></li>
         <li><a href="#how-it-works">How it works</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#pricing">Pricing</a></li>
@@ -620,7 +863,7 @@
       </ul>
 
       <div class="nav-cta">
-        <a href="#contact" class="btn btn-primary">Get Started →</a>
+        <a href="#ai-builder" class="btn btn-primary">Try for Free →</a>
       </div>
 
       <button id="hamburger" aria-label="Open menu">
@@ -631,12 +874,13 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-    <a href="#services"      class="mobile-link">Services</a>
+    <a href="#ai-builder"    class="mobile-link">AI Builder</a>
+    <a href="#features"      class="mobile-link">Features</a>
     <a href="#how-it-works"  class="mobile-link">How it works</a>
     <a href="#testimonials"  class="mobile-link">Testimonials</a>
     <a href="#pricing"       class="mobile-link">Pricing</a>
     <a href="#contact"       class="mobile-link">Contact</a>
-    <a href="#contact" class="btn btn-primary">Get Started →</a>
+    <a href="#ai-builder" class="btn btn-primary">Try for Free →</a>
   </div>
 
   <!-- ──────────────────────────────────────
@@ -645,32 +889,32 @@
   <section id="hero">
     <div class="container">
       <div class="hero-content">
-        <span class="badge">✦ Digital Innovation Studio</span>
+        <span class="badge">✦ AI-Powered Web Creation</span>
         <h1>
-          Build something<br/>
-          <span class="gradient-text">extraordinary</span>
+          Describe it.<br/>
+          <span class="gradient-text">AI builds it.</span>
         </h1>
         <p>
-          We craft high-performance websites, scalable web applications, and memorable
-          digital experiences that drive measurable results for forward-thinking businesses.
+          BuildAI turns your plain-English description into a fully functional, beautiful
+          website in seconds — no coding, no design skills required.
         </p>
         <div class="hero-actions">
-          <a href="#services" class="btn btn-primary">Explore Services →</a>
-          <a href="#contact"  class="btn btn-outline">Let's Talk</a>
+          <a href="#ai-builder" class="btn btn-primary">Build My Website →</a>
+          <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
         </div>
 
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="number">250+</div>
-            <div class="label">Projects delivered</div>
+            <div class="number">120k+</div>
+            <div class="label">Websites generated</div>
           </div>
           <div class="stat-item">
-            <div class="number">98%</div>
-            <div class="label">Client satisfaction</div>
+            <div class="number">8s</div>
+            <div class="label">Average build time</div>
           </div>
           <div class="stat-item">
-            <div class="number">12+</div>
-            <div class="label">Years of experience</div>
+            <div class="number">99%</div>
+            <div class="label">User satisfaction</div>
           </div>
         </div>
       </div>
@@ -678,46 +922,130 @@
   </section>
 
   <!-- ──────────────────────────────────────
-       Services
+       AI Builder Demo
   ────────────────────────────────────────── -->
-  <section id="services">
+  <section id="ai-builder">
     <div class="container">
       <div class="section-header reveal">
-        <span class="badge">What we do</span>
-        <h2>Services we <span class="gradient-text">excel</span> at</h2>
-        <p>From concept to deployment, we offer end-to-end digital solutions tailored to your goals.</p>
+        <span class="badge">🤖 Live AI Demo</span>
+        <h2>Build your website <span class="gradient-text">with AI</span></h2>
+        <p>Type what you want — our AI will generate a professional website for you instantly.</p>
+      </div>
+
+      <div class="ai-builder-wrapper">
+        <!-- Left: Prompt panel -->
+        <div class="ai-prompt-panel reveal">
+          <h3>Describe your website</h3>
+          <p>Be as detailed or as brief as you like. Our AI handles the rest.</p>
+
+          <textarea id="ai-prompt" class="prompt-textarea" placeholder="e.g. A modern portfolio website for a freelance photographer specializing in wedding photography. Include a gallery, about me section, and a booking form…"></textarea>
+
+          <div class="prompt-options">
+            <button class="prompt-chip" data-prompt="A landing page for a coffee shop with a warm, cozy design featuring our menu and location.">☕ Coffee Shop</button>
+            <button class="prompt-chip" data-prompt="A sleek SaaS product landing page with pricing, features, and a sign-up form.">🚀 SaaS Startup</button>
+            <button class="prompt-chip" data-prompt="A personal portfolio site for a UI/UX designer showcasing projects and a contact form.">🎨 Portfolio</button>
+            <button class="prompt-chip" data-prompt="An online store for handmade jewelry with product listings and a shopping cart.">🛍️ Online Store</button>
+            <button class="prompt-chip" data-prompt="A professional website for a dental clinic with services, team, and appointment booking.">🏥 Clinic</button>
+          </div>
+
+          <button class="btn btn-primary ai-generate-btn" id="generate-btn" onclick="generateWebsite()">
+            <span class="btn-label">✨ Generate Website</span>
+            <span class="btn-loading">⏳ AI is building…</span>
+          </button>
+        </div>
+
+        <!-- Right: Preview panel -->
+        <div class="ai-preview-panel reveal">
+          <div class="preview-topbar">
+            <span class="preview-dot red"></span>
+            <span class="preview-dot yellow"></span>
+            <span class="preview-dot green"></span>
+            <span class="preview-url" id="preview-url">your-site.buildai.com</span>
+          </div>
+          <div class="preview-body" id="preview-body">
+            <div class="preview-placeholder" id="preview-placeholder">
+              <div class="icon">🤖</div>
+              <p>Your generated website preview will appear here.<br/>Type a description and hit <strong>Generate</strong>.</p>
+            </div>
+            <div class="preview-site" id="preview-site">
+              <div class="mock-nav"></div>
+              <div class="mock-hero">
+                <div class="mock-hero-text">
+                  <div class="mock-line"></div>
+                  <div class="mock-line short"></div>
+                  <div class="mock-line xshort"></div>
+                </div>
+                <div class="mock-btn-small"></div>
+              </div>
+              <div class="mock-cards">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+              <div class="mock-footer"></div>
+              <div class="preview-badge">✓ Website ready in <span id="build-time">0</span>s</div>
+              <div class="preview-actions">
+                <a href="#pricing" class="btn btn-primary">Publish Site →</a>
+                <button class="btn btn-outline" onclick="resetPreview()">Try Another</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI feature pills -->
+      <div class="ai-features-bar">
+        <div class="ai-feature-pill"><span class="pill-icon">⚡</span> Instant generation</div>
+        <div class="ai-feature-pill"><span class="pill-icon">🎨</span> AI design system</div>
+        <div class="ai-feature-pill"><span class="pill-icon">📱</span> Mobile-responsive</div>
+        <div class="ai-feature-pill"><span class="pill-icon">🔍</span> SEO-optimized</div>
+        <div class="ai-feature-pill"><span class="pill-icon">♿</span> Accessibility built-in</div>
+        <div class="ai-feature-pill"><span class="pill-icon">🌐</span> 1-click publishing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────
+       Features
+  ────────────────────────────────────────── -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="badge">What we offer</span>
+        <h2>AI features that <span class="gradient-text">set us apart</span></h2>
+        <p>Every tool you need to go from idea to live website — all powered by AI.</p>
       </div>
 
       <div class="services-grid">
         <div class="service-card reveal">
+          <div class="service-icon">🤖</div>
+          <h3>AI Web Generation</h3>
+          <p>Describe your site in plain English and watch our AI generate a fully structured, styled website in under 10 seconds.</p>
+        </div>
+        <div class="service-card reveal">
           <div class="service-icon">🎨</div>
-          <h3>UI / UX Design</h3>
-          <p>User-centered interfaces that delight users and convert visitors into loyal customers.</p>
+          <h3>Smart Design System</h3>
+          <p>AI selects color palettes, typography, and layouts that match your brand personality and industry automatically.</p>
         </div>
         <div class="service-card reveal">
-          <div class="service-icon">💻</div>
-          <h3>Web Development</h3>
-          <p>Modern, performant websites built with cutting-edge technologies and best practices.</p>
+          <div class="service-icon">✍️</div>
+          <h3>AI Copywriting</h3>
+          <p>Generate compelling headlines, descriptions, and calls-to-action tailored to your audience — no writer needed.</p>
         </div>
         <div class="service-card reveal">
-          <div class="service-icon">📱</div>
-          <h3>Mobile-First</h3>
-          <p>Responsive experiences optimized for every screen size, from wearables to large displays.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">⚡</div>
-          <h3>Performance</h3>
-          <p>Blazing-fast load times and Core Web Vitals optimization that improve SEO and retention.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon">🔒</div>
-          <h3>Security</h3>
-          <p>Enterprise-grade security practices protecting your data and your customers' trust.</p>
+          <div class="service-icon">🔍</div>
+          <h3>AI SEO Optimizer</h3>
+          <p>Built-in AI analyzes your content and automatically adds meta tags, structured data, and keyword optimization.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-icon">📊</div>
-          <h3>Analytics</h3>
-          <p>Data-driven insights and dashboards that help you make informed business decisions.</p>
+          <h3>AI Analytics Insights</h3>
+          <p>Our AI reads your traffic data and surfaces actionable recommendations to improve conversions and engagement.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">🔄</div>
+          <h3>Continuous Improvement</h3>
+          <p>AI monitors your site performance over time and suggests — or automatically applies — improvements to keep you ahead.</p>
         </div>
       </div>
     </div>
@@ -729,31 +1057,31 @@
   <section id="how-it-works">
     <div class="container">
       <div class="section-header reveal">
-        <span class="badge">Our process</span>
-        <h2>How we <span class="gradient-text">work</span></h2>
-        <p>A clear, transparent process that keeps you in control every step of the way.</p>
+        <span class="badge">Our AI process</span>
+        <h2>From idea to website <span class="gradient-text">in 4 steps</span></h2>
+        <p>BuildAI removes all the complexity. Just describe your vision and go live.</p>
       </div>
 
       <div class="steps-grid">
         <div class="step reveal">
           <div class="step-number">01</div>
-          <h3>Discovery</h3>
-          <p>We deep-dive into your business goals, audience, and competitive landscape.</p>
+          <h3>Describe</h3>
+          <p>Tell our AI what your website is about in plain English — industry, style, sections, and goals.</p>
         </div>
         <div class="step reveal">
           <div class="step-number">02</div>
-          <h3>Strategy</h3>
-          <p>A tailored roadmap with clear milestones, timelines, and deliverables.</p>
+          <h3>AI Generates</h3>
+          <p>Our large-language model and design AI create your layout, content, colors, and code instantly.</p>
         </div>
         <div class="step reveal">
           <div class="step-number">03</div>
-          <h3>Design & Build</h3>
-          <p>Pixel-perfect designs brought to life with clean, maintainable code.</p>
+          <h3>Preview & Customize</h3>
+          <p>Review the generated site in the live editor. Tweak text, colors, and sections with simple prompts.</p>
         </div>
         <div class="step reveal">
           <div class="step-number">04</div>
-          <h3>Launch & Grow</h3>
-          <p>Smooth deployment followed by ongoing support and growth optimization.</p>
+          <h3>Publish</h3>
+          <p>One click publishes your site to a fast global CDN with a free subdomain or your own custom domain.</p>
         </div>
       </div>
     </div>
@@ -766,41 +1094,41 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="badge">Social proof</span>
-        <h2>Loved by our <span class="gradient-text">clients</span></h2>
-        <p>Don't take our word for it — here's what our clients say about working with us.</p>
+        <h2>Loved by <span class="gradient-text">builders</span></h2>
+        <p>Thousands of entrepreneurs, creators, and businesses launched with BuildAI.</p>
       </div>
 
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
           <div class="stars">★★★★★</div>
-          <blockquote>"Nexus transformed our outdated website into a conversion machine. Traffic doubled and leads tripled within 3 months."</blockquote>
+          <blockquote>"I described my café website in two sentences and BuildAI produced something I couldn't have paid a designer $3,000 for. Launched in 20 minutes."</blockquote>
           <div class="testimonial-author">
-            <div class="author-avatar">SL</div>
+            <div class="author-avatar">MR</div>
             <div class="author-info">
-              <div class="name">Sarah Lindström</div>
-              <div class="role">CEO, Elevate SaaS</div>
+              <div class="name">Maria Reyes</div>
+              <div class="role">Owner, Roast & Co.</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal">
           <div class="stars">★★★★★</div>
-          <blockquote>"The team's attention to detail and commitment to performance is unmatched. Our Lighthouse score went from 54 to 97."</blockquote>
+          <blockquote>"As a developer I was skeptical, but the code quality BuildAI produces is clean, semantic, and accessible. It's become part of my rapid-prototyping workflow."</blockquote>
           <div class="testimonial-author">
-            <div class="author-avatar">MK</div>
+            <div class="author-avatar">TN</div>
             <div class="author-info">
-              <div class="name">Marcus Kim</div>
-              <div class="role">CTO, DataFlow Inc.</div>
+              <div class="name">Tyler Nguyen</div>
+              <div class="role">Full-Stack Engineer, Stripe</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card reveal">
           <div class="stars">★★★★★</div>
-          <blockquote>"Professional, fast, and genuinely passionate about quality. Delivered on time and on budget — rare in this industry."</blockquote>
+          <blockquote>"We validated three startup landing pages in one afternoon using BuildAI. The AI-generated copy was remarkably on-brand. Game-changing for product teams."</blockquote>
           <div class="testimonial-author">
-            <div class="author-avatar">AP</div>
+            <div class="author-avatar">PV</div>
             <div class="author-info">
-              <div class="name">Amara Patel</div>
-              <div class="role">Founder, Bloom Agency</div>
+              <div class="name">Priya Varma</div>
+              <div class="role">Head of Product, LaunchPad</div>
             </div>
           </div>
         </div>
@@ -816,58 +1144,61 @@
       <div class="section-header reveal">
         <span class="badge">Transparent pricing</span>
         <h2>Simple, <span class="gradient-text">honest</span> pricing</h2>
-        <p>No hidden fees. Cancel or upgrade at any time.</p>
+        <p>Start free, scale as you grow. No hidden fees, cancel any time.</p>
       </div>
 
       <div class="pricing-grid">
-        <!-- Starter -->
+        <!-- Free -->
         <div class="pricing-card reveal">
-          <div class="plan-label">Starter</div>
+          <div class="plan-label">Free</div>
           <div class="plan-price">
-            <span class="amount gradient-text">$49</span>
+            <span class="amount gradient-text">$0</span>
             <span class="period"> / mo</span>
           </div>
-          <div class="plan-desc">Perfect for small businesses launching their first professional website.</div>
+          <div class="plan-desc">Try the AI builder and launch your first site with no commitment.</div>
           <ul class="plan-features">
-            <li>5-page responsive website</li>
-            <li>Basic SEO setup</li>
-            <li>Contact form</li>
-            <li>1 month free support</li>
+            <li>3 AI-generated websites</li>
+            <li>BuildAI subdomain</li>
+            <li>AI copywriting</li>
+            <li>Basic SEO tools</li>
           </ul>
-          <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get started</a>
+          <a href="#ai-builder" class="btn btn-outline" style="width:100%;justify-content:center;">Start Building</a>
         </div>
 
         <!-- Pro (popular) -->
         <div class="pricing-card popular reveal">
           <div class="plan-label">Pro <span class="popular-tag">Most popular</span></div>
           <div class="plan-price">
-            <span class="amount gradient-text">$149</span>
+            <span class="amount gradient-text">$29</span>
             <span class="period"> / mo</span>
           </div>
-          <div class="plan-desc">Ideal for growing companies that need a scalable, feature-rich web presence.</div>
+          <div class="plan-desc">Unlimited AI generations, custom domains, and advanced AI features.</div>
           <ul class="plan-features">
-            <li>Unlimited pages</li>
-            <li>Advanced SEO & Analytics</li>
-            <li>CMS integration</li>
-            <li>Performance optimization</li>
-            <li>3 months free support</li>
+            <li>Unlimited AI generations</li>
+            <li>Custom domain</li>
+            <li>Advanced AI SEO optimizer</li>
+            <li>AI analytics insights</li>
+            <li>Remove BuildAI branding</li>
+            <li>Priority support</li>
           </ul>
           <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Get started →</a>
         </div>
 
-        <!-- Enterprise -->
+        <!-- Agency -->
         <div class="pricing-card reveal">
-          <div class="plan-label">Enterprise</div>
+          <div class="plan-label">Agency</div>
           <div class="plan-price">
-            <span class="amount gradient-text">Custom</span>
+            <span class="amount gradient-text">$99</span>
+            <span class="period"> / mo</span>
           </div>
-          <div class="plan-desc">Tailored solutions for high-traffic platforms and enterprise organizations.</div>
+          <div class="plan-desc">For teams and agencies building multiple client sites with AI at scale.</div>
           <ul class="plan-features">
             <li>Everything in Pro</li>
-            <li>Custom integrations & APIs</li>
+            <li>Up to 50 client sites</li>
+            <li>White-label option</li>
+            <li>Team collaboration</li>
+            <li>API access</li>
             <li>Dedicated account manager</li>
-            <li>SLA guarantee</li>
-            <li>Priority 24/7 support</li>
           </ul>
           <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Contact sales</a>
         </div>
@@ -882,34 +1213,34 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="badge">Get in touch</span>
-        <h2>Ready to <span class="gradient-text">start</span>?</h2>
-        <p>Tell us about your project and we'll get back to you within one business day.</p>
+        <h2>Ready to <span class="gradient-text">build</span>?</h2>
+        <p>Have questions, need a custom plan, or want a live demo? We're here to help.</p>
       </div>
 
       <div class="contact-wrapper">
         <div class="contact-info reveal">
-          <h3>Let's build something great together</h3>
-          <p>Whether you have a fully-formed brief or just an idea, we're here to help turn your vision into reality.</p>
+          <h3>Let's build your AI-powered website</h3>
+          <p>Whether you're a solo founder or an enterprise team, we'll find the right plan and help you get started with AI web creation today.</p>
 
           <div class="contact-item">
             <div class="contact-item-icon">📧</div>
             <div class="info">
               <div class="title">Email us</div>
-              <div class="value">hello@nexus.studio</div>
+              <div class="value">hello@buildai.com</div>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">📞</div>
             <div class="info">
               <div class="title">Call us</div>
-              <div class="value">+1 (555) 000-1234</div>
+              <div class="value">+1 (555) BUILD-AI</div>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">📍</div>
             <div class="info">
               <div class="title">Office</div>
-              <div class="value">San Francisco, CA — Remote friendly</div>
+              <div class="value">San Francisco, CA — Fully remote team</div>
             </div>
           </div>
         </div>
@@ -930,13 +1261,14 @@
             <input type="email" id="email" name="email" placeholder="jane@company.com" required />
           </div>
           <div class="form-group">
-            <label for="service">Service interested in</label>
+            <label for="service">I'm interested in</label>
             <select id="service" name="service">
-              <option value="">Select a service…</option>
-              <option>UI / UX Design</option>
-              <option>Web Development</option>
-              <option>Performance Optimization</option>
-              <option>Analytics</option>
+              <option value="">Select an option…</option>
+              <option>AI Website Generator</option>
+              <option>Pro Plan</option>
+              <option>Agency Plan</option>
+              <option>API / Custom Integration</option>
+              <option>White-label Solution</option>
               <option>Other</option>
             </select>
           </div>
@@ -958,24 +1290,23 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#" class="nav-logo gradient-text">Nexus</a>
-          <p>Professional digital solutions for modern businesses. We design, build, and scale web experiences that matter.</p>
+          <a href="#" class="nav-logo gradient-text">BuildAI</a>
+          <p>The AI-powered platform that turns your ideas into beautiful, production-ready websites in seconds.</p>
           <div class="footer-social">
             <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
             <a href="#" class="social-link" aria-label="LinkedIn">in</a>
             <a href="#" class="social-link" aria-label="GitHub">⌥</a>
-            <a href="#" class="social-link" aria-label="Dribbble">◎</a>
+            <a href="#" class="social-link" aria-label="Product Hunt">⬆</a>
           </div>
         </div>
 
         <div class="footer-col">
-          <h4>Services</h4>
+          <h4>Product</h4>
           <ul>
-            <li><a href="#services">UI / UX Design</a></li>
-            <li><a href="#services">Web Development</a></li>
-            <li><a href="#services">Mobile-First</a></li>
-            <li><a href="#services">Performance</a></li>
-            <li><a href="#services">Analytics</a></li>
+            <li><a href="#ai-builder">AI Builder</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
           </ul>
         </div>
 
@@ -985,7 +1316,7 @@
             <li><a href="#">About us</a></li>
             <li><a href="#">Careers</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">Press</a></li>
+            <li><a href="#">Changelog</a></li>
           </ul>
         </div>
 
@@ -1000,8 +1331,8 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Nexus Studio. All rights reserved.</span>
-        <span>Built with ♥ and clean code</span>
+        <span>© 2026 BuildAI. All rights reserved.</span>
+        <span>Built with 🤖 AI and ♥ human creativity</span>
       </div>
     </div>
   </footer>
@@ -1067,7 +1398,7 @@
       const timer = setInterval(() => {
         start += increment;
         if (start >= target) { start = target; clearInterval(timer); }
-        el.textContent = (Number.isInteger(target) ? Math.floor(start) : start.toFixed(1)) + suffix;
+        el.textContent = (Number.isInteger(target) ? Math.floor(start) : start.toFixed(0)) + suffix;
       }, step);
     }
 
@@ -1076,12 +1407,75 @@
     const heroObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !counted) {
         counted = true;
-        animateCounter(document.querySelectorAll('.stat-item .number')[0], 250, '+');
-        animateCounter(document.querySelectorAll('.stat-item .number')[1], 98,  '%');
-        animateCounter(document.querySelectorAll('.stat-item .number')[2], 12,  '+');
+        animateCounter(document.querySelectorAll('.stat-item .number')[0], 120, 'k+');
+        animateCounter(document.querySelectorAll('.stat-item .number')[1], 8,   's');
+        animateCounter(document.querySelectorAll('.stat-item .number')[2], 99,  '%');
       }
     }, { threshold: 0.5 });
     heroObserver.observe(heroSection);
+
+    /* ── Prompt chip selection ── */
+    const chips = document.querySelectorAll('.prompt-chip');
+    const promptTextarea = document.getElementById('ai-prompt');
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        promptTextarea.value = chip.dataset.prompt;
+        promptTextarea.focus();
+      });
+    });
+
+    /* ── AI Builder Demo ── */
+    const siteNames = [
+      'my-coffee-shop', 'my-portfolio', 'my-startup', 'my-boutique', 'my-clinic',
+      'my-agency', 'my-restaurant', 'my-studio', 'my-store', 'my-brand'
+    ];
+
+    function generateWebsite() {
+      const prompt = promptTextarea.value.trim();
+      if (!prompt) {
+        promptTextarea.focus();
+        promptTextarea.style.borderColor = 'var(--color-accent)';
+        setTimeout(() => { promptTextarea.style.borderColor = ''; }, 1500);
+        return;
+      }
+
+      const btn = document.getElementById('generate-btn');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      const buildStart = Date.now();
+
+      setTimeout(() => {
+        const elapsed = ((Date.now() - buildStart) / 1000).toFixed(0);
+        document.getElementById('build-time').textContent = elapsed;
+
+        const randomName = siteNames[Math.floor(Math.random() * siteNames.length)];
+        document.getElementById('preview-url').textContent = randomName + '.buildai.com';
+
+        document.getElementById('preview-placeholder').style.display = 'none';
+        const site = document.getElementById('preview-site');
+        site.classList.add('visible');
+
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }, Math.random() * 1500 + 2000);
+    }
+
+    function resetPreview() {
+      document.getElementById('preview-placeholder').style.display = '';
+      document.getElementById('preview-site').classList.remove('visible');
+      document.getElementById('preview-url').textContent = 'your-site.buildai.com';
+      promptTextarea.value = '';
+      chips.forEach(c => c.classList.remove('active'));
+    }
+
+    /* Allow Enter+Ctrl/Cmd to generate */
+    promptTextarea.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') generateWebsite();
+    });
   </script>
 </body>
 </html>
